@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tracking</title>
+    <script>
+        function sendLocation(latitude, longitude, speed) {
+            const busId = 1; // Unique ID for the bus
+
+            fetch("http://192.168.247.192/bussidelocationupdate.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ busId, latitude, longitude, speed })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Server Response:", data))
+            .catch(error => console.error("Error:", error));
+        }
+
+        function startTracking() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.watchPosition(
+                    position => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const speed = position.coords.speed || 0;
+                        sendLocation(lat, lon, speed);
+                    },
+                    error => console.error("Location Error:", error),
+                    { enableHighAccuracy: true, maximumAge: 1000 }
+                );
+            } else {
+                alert("Geolocation not supported.");
+            }
+        }
+
+        window.onload = startTracking;
+    </script>
+</head>
+<body>
+    <h1>Bus Location Tracking Active...</h1>
+</body>
+</html>

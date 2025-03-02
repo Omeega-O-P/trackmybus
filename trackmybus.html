@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Route Planner</title>
+    <link rel="stylesheet" href="trackmybus.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚍 Smart Route Planner</h1>
+            <p>Plan your journey with ease and excitement!</p>
+        </header>
+        
+        <main class="main-content">
+            <form method="POST" action="videos.php">
+                <div class="location-form">
+                    <div class="input-group">
+                        <label for="current-location">Current Location</label>
+                        <select name="current_location" id="current-location" class="input-dropdown">
+                            <option value="">Select Current Location</option>
+                            <option value="Mauli College">Mauli College</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="destination">Destination</label>
+                        <select name="destination" id="destination" class="input-dropdown">
+                            <option value="Khamgaon">Khamgaon</option>
+                            <option value="Shegaon">Shegaon</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-find-route">Find Route</button>
+                </div>
+            </form>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2025 Smart Route Planner | Built for Students 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>
